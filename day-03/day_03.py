@@ -1,7 +1,11 @@
-import io
 from functools import reduce
 
-def tree_finder(map_data: list, right: int, down: int, tree_char: chr = '#') -> int:
+
+def tree_finder(
+        map_data: list,
+        right: int,
+        down: int,
+        tree_char: chr = '#') -> int:
     height = len(map_data)
     width = len(map_data[0])
     x = 0
@@ -13,24 +17,21 @@ def tree_finder(map_data: list, right: int, down: int, tree_char: chr = '#') -> 
         y += down
 
         pos_x = x % width
-        
+
         # Check for trees
         if map_data[y][pos_x] == tree_char:
-            # map_data[y] = f"{map_data[y][:pos_x]}X{map_data[y][pos_x + 1:]}"
             trees += 1
-        # else:
-            # map_data[y]= f"{map_data[y][:pos_x]}O{map_data[y][pos_x + 1:]}"
-    
+
     for line in map_data:
         print(line)
     return trees
+
 
 def part1():
     file_name = "input.txt"
 
     file = open(file_name, "r")
-    lines = file.read().splitlines() 
-
+    lines = file.read().splitlines()
 
     trees_hit = tree_finder(
         map_data=lines,
@@ -40,18 +41,19 @@ def part1():
 
     print(trees_hit)
 
+
 def part2():
     file_name = "input.txt"
 
     file = open(file_name, "r")
-    lines = file.read().splitlines() 
+    lines = file.read().splitlines()
 
     attempts = [
-        [1,1],
-        [3,1],
-        [5,1],
-        [7,1],
-        [1,2]
+        [1, 1],
+        [3, 1],
+        [5, 1],
+        [7, 1],
+        [1, 2]
     ]
 
     trees = []
@@ -64,8 +66,9 @@ def part2():
         ))
 
     print(trees)
-    result = reduce((lambda a,b: a*b), trees)
+    result = reduce((lambda a, b: a*b), trees)
     print(result)
+
 
 part1()
 part2()

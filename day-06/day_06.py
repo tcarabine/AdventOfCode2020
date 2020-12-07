@@ -1,12 +1,12 @@
-import io
 import re
+
 
 def part1():
     file_name = "input.txt"
     lines = open(file_name, "r").read()
     lines = re.sub(r'\n\n', '!', lines)
     lines = re.sub(r'\n', '', lines)
-    lines = re.sub('!',r'\n', lines)
+    lines = re.sub('!', r'\n', lines)
     lines = re.sub(' ', '', lines)
     lines = lines.split('\n')
 
@@ -17,11 +17,12 @@ def part1():
 
     print(count)
 
+
 def part2():
     file_name = "input.txt"
     lines = open(file_name, "r").read()
     groups = lines.split('\n\n')
-    
+
     count = 0
 
     for group in groups:
@@ -35,6 +36,7 @@ def part2():
             count += len(answers[0])
 
     print(count)
+
 
 part1()
 part2()
